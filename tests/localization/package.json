@@ -1,0 +1,6 @@
+{
+  "name": "dcs-control-localization-tests",
+  "private": true,
+  "scripts": { "test": "node i18n.test.cjs" },
+  "devDependencies": { "jsdom": "30.1.3" }
+}

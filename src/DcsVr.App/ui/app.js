@@ -1176,7 +1176,7 @@ function renderOriginals() {
 }
 function openSearch() { $('searchDialog').showModal(); $('searchInput').value = ''; renderSearch(); $('searchInput').focus(); }
 function renderSearch() {
-  const normalize = text => text.toLowerCase().replace(/[^a-z0-9]/g,'');
+  const normalize = text => text.toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');
   const query = normalize($('searchInput').value);
   const shortcuts = [
     ['overview','Features','Turn Engine Optimizations, CPU Boost, Quad Views, DLSS 5 and frame generation on or off in the right panel.','featureList'],
@@ -1192,7 +1192,8 @@ function renderSearch() {
     ['recovery','Stock DCS','Back to stock DCS: put back every file and setting DCS Control changed.','originals'],
     ['guide','Feature guide','What each feature does, what to expect from it and what it costs.','featureGuide']
   ].map(([page,title,description,id]) => ({page,title,description,path:id,element:$(id),input:$(id)}));
-  searchResults = [...fields,...shortcuts].filter(f => !(profile?.desktop && VR_PAGES.includes(f.page))).filter(f => !query || normalize(f.title+' '+f.description+' '+f.path+' '+pages.find(p => p[0] === f.page).slice(1,4).join(' ')).includes(query));
+  const localizedSearch = text => text+' '+(window.dcsI18n?.translate(text) ?? text);
+  searchResults = [...fields,...shortcuts].filter(f => !(profile?.desktop && VR_PAGES.includes(f.page))).filter(f => !query || normalize([f.title,f.description,f.path,...pages.find(p => p[0] === f.page).slice(1,4)].map(localizedSearch).join(' ')).includes(query));
   $('searchResults').innerHTML = searchResults.length ? searchResults.map((f,index) => `<button class="search-result" data-index="${index}"><div><b>${escape(f.title)}</b><small>${escape(f.description)}</small></div><span>${f.path === 'featureList' ? 'Right panel' : pages.find(p => p[0] === f.page)[1]} ›</span></button>`).join('') : '<div class="empty-state"><p>No settings match this search.</p></div>';
   $('searchResults').querySelectorAll('button').forEach(b => b.addEventListener('click',() => revealSetting(searchResults[Number(b.dataset.index)])));
 }

@@ -1,0 +1,6 @@
+html[lang="zh-CN"]{--display:"Bahnschrift SemiCondensed","Bahnschrift","Microsoft YaHei UI","Microsoft YaHei","Segoe UI",sans-serif}
+html[lang="zh-CN"] body{font-family:"Segoe UI","Microsoft YaHei UI","Microsoft YaHei",sans-serif}
+.language-choice{display:flex;flex-direction:column;gap:4px;color:var(--muted);font-size:10px;padding:4px 0}
+.language-choice select{width:100%;min-width:0;padding:4px 1px;font-size:11px;app-region:no-drag;-webkit-app-region:no-drag}
+@media(min-width:1181px){.language-choice{flex-direction:row;align-items:center;padding:4px 12px;font-size:11px}.language-choice select{width:auto;margin-left:auto}}
+html[lang="zh-CN"] .panel-label,html[lang="zh-CN"] .eyebrow,html[lang="zh-CN"] .rail-group{letter-spacing:.5px}

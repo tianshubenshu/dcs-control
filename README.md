@@ -1,5 +1,7 @@
 # DCS Control
 
+[简体中文界面、使用及上游同步说明](README.zh-CN.md) · Chinese localization is maintained on the `zh-CN` branch.
+
 A free Windows app for DCS World that runs **DLSS 5, frame generation and Quad Views foveated rendering together in VR** (Pimax), set up and launched with one button, and makes DCS run faster for every pilot, on a monitor or any headset.
 
 - **Every pilot** (monitor, Quest, Varjo, Reverb, Pimax…): **Engine Optimizations** remove CPU work inside DCS without changing the image, about **+50-60 % FPS** at a busy airfield when DCS is CPU-bound. Once applied they stay on every time DCS starts, also from Steam or a desktop shortcut.
